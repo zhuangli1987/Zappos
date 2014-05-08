@@ -126,7 +126,12 @@ public final class Utility {
             while (true) {
                 line = br.readLine();
                 if (line == null) {
-                    products.addAll(buildFromJson(urlRequest, pr));
+                    try {
+                        products.addAll(buildFromJson(urlRequest, pr));
+                    } catch (UtilProcessException e) {
+                    	e.printStackTrace();
+                        unsucessful.addAll(pr.getList());
+                    }
                     break;
                 }
                 line = line.trim();
