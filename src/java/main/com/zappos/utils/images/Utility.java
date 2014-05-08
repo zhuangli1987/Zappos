@@ -65,6 +65,7 @@ public final class Utility {
                     System.out.println("Unsuccessful request: code["
                             + productResponse.getStatusCode() + "] " + productResponse.getError());
                 }
+                throw new UtilProcessException("Bad status code.");
             } else {
                 for (Product product : productResponse.getProduct()) {
                     System.out.println("Get image URL: " + product.getDefaultImageUrl());
